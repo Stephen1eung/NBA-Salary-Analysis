@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-
+from unidecode import unidecode
 #Requesting from url
 url='https://hoopshype.com/nba2k/'
 website=requests.get(url)
@@ -25,8 +25,9 @@ for i in table.find_all('tr')[1:]:
 
 #Getting rid of spaces and tabs 
 ratingData['Rank']=ratingData['Rank'].str.extract('(\d+)')
-ratingData['Name']=ratingData['Name'].str.extract('([a-zA-Z\'\-\" "]+)')
+ratingData['Name']=ratingData['Name'].str.extract('([a-zA-Z\'\-\" "\.\,\']+)')
 ratingData['Rating']=ratingData['Rating'].str.extract('(\d+)')
-
+ratingData['Name']=ratingData['Name'].apply(unidecode)
+ratingData['Name'].replace('(Jr)$','',regex=True,inplace=True)
 #Saving to csv
 ratingData.to_csv('NBA2KRating.csv',index=False)

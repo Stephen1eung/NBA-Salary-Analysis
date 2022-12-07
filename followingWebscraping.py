@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-
+from unidecode import unidecode
 #Requesting from url
 url='https://www.popularbasketballers.com/'
 website=requests.get(url)
@@ -27,4 +27,6 @@ for i in table.find_all('tr')[1:]:
  followerData.loc[length] = row
 
 #Saving to csv
+followerData['Name']=followerData['Name'].apply(unidecode)
+followerData['Name'].replace('(Jr\.)$','',regex=True,inplace=True)
 followerData.to_csv('InstagramFollowers.csv',index=False)

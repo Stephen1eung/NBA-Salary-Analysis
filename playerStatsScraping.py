@@ -2,10 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import re
-
+from unidecode import unidecode
 pattern=re.compile('^\d+$')
 pattern2=re.compile('Rk')
-
+pattern3=re.compile('\" "Jr$')
 #Requesting from url
 url='https://www.basketball-reference.com/leagues/NBA_2023_totals.html'
 website=requests.get(url)
@@ -36,4 +36,7 @@ for i in table.find_all('tr')[1:]:
      length=len(playerStats)
      playerStats.loc[length]=row
 
+playerStats['Player']=playerStats['Player'].apply(unidecode)
+
+playerStats['Player'].replace('(Jr\.)$','',regex=True,inplace=True)
 playerStats.to_csv('playerStats.csv',index=False)
