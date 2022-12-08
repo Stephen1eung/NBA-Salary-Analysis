@@ -24,6 +24,11 @@ data.dropna(inplace=True)
 
 #Sorting by salary and removing player names
 data=data.sort_values(by=["Salary"],ascending=False)
+data['Instagram Followers'].replace(',','', regex=True, inplace=True)
+data['Instagram Followers']=pd.to_numeric(data['Instagram Followers'])
+print(data.dtypes)
+
+data.to_csv('cleanedDataWithNames.csv',index=False)
 data.drop(columns=["Name"],inplace=True)
 
 data.to_csv('cleanedData.csv',index=False)
