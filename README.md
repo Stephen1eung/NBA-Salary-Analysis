@@ -1,7 +1,7 @@
 # NBA Statistics Analysis Using Regression Models
 
 ## Introduction
-Our group wanted to analyze the salaries of NBA players, to determine if there exists a difference in the salaries of the players depending on what position they played. We also wanted to analyze to see if NBA players had an increase in wage depending on different features such as their popularity on instagram or their age. There were four main data files used in this project: NBA salaries, NBA 2k ratings, NBA player Instagram followers, and NBA player statistics. The data was scraped off of three NBA data sources: Basketball References, Popular Basketballers, and HoopsHype.   
+We wanted to analyze the salaries of NBA players, to determine if there exists a difference in the salaries of the players depending on what position they played. We also wanted to analyze to see if NBA players had an increase in wage depending on different features such as their popularity on instagram or their age. There were four main data files used in this project: NBA salaries, NBA 2k ratings, NBA player Instagram followers, and NBA player statistics. The data was scraped off of three NBA data sources: Basketball References, Popular Basketballers, and HoopsHype.   
 ## Commands
 As there were no files that needed to be run through the command line, the files can all be run as simple python files. 
 
